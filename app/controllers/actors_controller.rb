@@ -9,9 +9,9 @@ class ActorsController < ApplicationController
     the_actor = matching_records.at(0)
 
     # Overwrite each column with the values from user inputs
-    the_actor.name= params.fetch("the_title")
-    the_actor.dob = params.fetch("the_year")
-    the_actor.bio = params.fetch("the_duration")
+    the_actor.name= params.fetch("the_name")
+    the_actor.dob = params.fetch("the_dob")
+    the_actor.bio = params.fetch("the_bio")
     the_actor.image = params.fetch("the_image")
 
     # Save
@@ -25,14 +25,14 @@ class ActorsController < ApplicationController
 
   def create
 
-    m = Movie.new
-    the_actor.name= params.fetch("the_title")
-    the_actor.dob = params.fetch("the_year")
-    the_actor.bio = params.fetch("the_duration")
+    the_actor = Actor.new
+    the_actor.name= params.fetch("the_name")
+    the_actor.dob = params.fetch("the_dob")
+    the_actor.bio = params.fetch("the_bio")
     the_actor.image = params.fetch("the_image")
 
 
-    m.save
+    the_actor.save
 
     redirect_to("/actors")
   end
